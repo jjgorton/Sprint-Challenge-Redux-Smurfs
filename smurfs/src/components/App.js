@@ -21,8 +21,11 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<SmurfList smurfs={this.props.smurfs} />
-				<AddForm />
+				<h1>Smurf Village</h1>
+				<div className="container">
+					<SmurfList smurfs={this.props.smurfs} />
+					<AddForm />
+				</div>
 			</div>
 		);
 	}

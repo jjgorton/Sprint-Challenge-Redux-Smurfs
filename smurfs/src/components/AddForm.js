@@ -30,6 +30,7 @@ class AddForm extends React.Component {
 		return (
 			<div className="form-wrapper">
 				<form onSubmit={this.addSmurf}>
+					<h3>Add a Smurf to the Village!</h3>
 					<input
 						type="text"
 						name="name"
