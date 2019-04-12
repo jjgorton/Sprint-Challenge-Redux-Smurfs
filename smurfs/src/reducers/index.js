@@ -1,4 +1,4 @@
-import { FETCH_START, FETCH_SUCCESS, FETCH_FAILURE } from '../actions';
+import { FETCH_START, FETCH_SUCCESS, FETCH_FAILURE, ADD_START, ADD_SUCCESS, ADD_FAILURE } from '../actions';
 
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
 const initialState = {
@@ -28,6 +28,23 @@ function reducer(state = initialState, action) {
 				...state,
 				fetchingSmurfs : false,
 				error          : action.payload
+			};
+		case ADD_START:
+			return {
+				...state,
+				addingSmurf : true
+			};
+		case ADD_SUCCESS:
+			return {
+				...state,
+				addingSmurf : false,
+				smurfs      : state.smurfs.push(action.payload)
+			};
+		case ADD_FAILURE:
+			return {
+				...state,
+				addingSmurf : false,
+				error       : action.payload
 			};
 		default:
 			return state;

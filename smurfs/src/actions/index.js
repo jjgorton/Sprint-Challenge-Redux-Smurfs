@@ -4,6 +4,10 @@ export const FETCH_START = 'FETCH_START';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
 
+export const ADD_START = 'FETCH_START';
+export const ADD_SUCCESS = 'FETCH_SUCCESS';
+export const ADD_FAILURE = 'FETCH_FAILURE';
+
 export const getSmurfs = () => (dispatch) => {
 	dispatch({ type: FETCH_START });
 	axios
@@ -19,6 +23,26 @@ export const getSmurfs = () => (dispatch) => {
 			console.log('error', err);
 			dispatch({
 				type    : FETCH_FAILURE,
+				payload : err
+			});
+		});
+};
+
+export const newSmurf = (smurfObj) => (dispatch) => {
+	dispatch({ type: ADD_START });
+	axios
+		.post('http://localhost:3333/smurfs', smurfObj)
+		.then((res) => {
+			console.log('add Then', res);
+			dispatch({
+				type    : ADD_SUCCESS,
+				payload : res.data
+			});
+		})
+		.catch((err) => {
+			console.log('add Error', err);
+			dispatch({
+				type    : ADD_FAILURE,
 				payload : err
 			});
 		});
